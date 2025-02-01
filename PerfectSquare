@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+bool Odd(int n)
+{
+    return n%2==1;
+}
+int main(){
+    //fnding a perfectsqaure with last 2-degits is add
+    cout<<"Perfert Square with last 2-digits is odd is: ";
+
+    /*for (int i=1;i<=100000;i++)
+    {
+        int last_digit = (i*i)%10;
+        int second_digit = ((i*i)/10%10);
+        if (Odd(second_digit) && Odd(last_digit))
+        {
+            cout<<i<<endl;
+            cout<<"Perfect Square is: "<<i*i<<" ";
+            return 0;
+        }
+    }*/
+   long long x =1;
+   while (x<1000000) 
+    {
+        long long square = x*x;
+        int last_digit = (x*x)%10;
+        int second_digit = ((x*x)/10%10);
+        if (Odd(second_digit) && Odd(last_digit))
+        {
+            cout<<x<<endl;
+            cout<<"Perfect Square is: "<<x<<"= "<<square<<" \n";
+            return 0;
+        }
+     x++;
+     //if dont have ; say there no excisting perfect square     
+    }
+    cout<<"No Perfect Square with last 2-digits is existing\n";
+    system("pause");
+    return 0;
+}
+
