@@ -5,12 +5,13 @@ string add(string a,string b)
 {
 	string result ="";
 	int lengthA = a.length();
-	int lengthB = a.length();
+	int lengthB = b.length();
+    	int carry =0;
 	while(lengthA >0|| lengthB >0)
 	{
 		int digitA = lengthA>0 ? a[lengthA-1]-'0':0;
 		int digitB = lengthB>0 ? b[lengthB-1] - '0':0;
-		int temp =0,carry =0;
+		int temp =0;
 		temp = carry + digitA + digitB;
 		carry = temp/10;
 		temp %= 10;
@@ -32,4 +33,3 @@ int main(){
 	return 0;
 
 }
-
