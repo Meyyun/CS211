@@ -1,0 +1,47 @@
+#include<cctype>
+using namespace std;
+string isupper(string& word)
+{
+        for (int i =0; i<word.size();i++)
+        {
+                word[i] = toupper(word[i]);
+        }
+        retrun word;
+
+};
+int main(){
+        string input;
+        const int Max_Team = 26;
+        //index = input[i] -'A';
+        //team[index]++;
+        while(true)
+        {
+                cout<<"Enter race results(A-Z) (or 'done' to exit program): ";
+                cin>>input;
+                if (input == "done")
+                {
+                        break;
+                }
+                bool valid = true;
+                int team[Max_Team];
+                for (int i =0;i<= input.size();i++)
+                {
+                        int index = input[i]- 'A';
+                        team[index]++;
+                }
+                int num_team=0;
+                for(int i=0;i<= Max_Team;i++)
+                {
+                        if (team[i] !=0)
+                        {
+                                num_team++;
+                        }
+
+                }
+               
+
+        }
+        return 0;
+
+
+}
