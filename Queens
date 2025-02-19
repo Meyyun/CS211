@@ -1,0 +1,63 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+int main() {
+    int q[8][8]{}, r,c=0;
+    q[0][0] = 1;
+    nc:
+        c++;
+        if (c ==8)
+        {
+            goto print;
+        }
+        r =-1;
+    nr:
+        r++;
+        if (r == 8)
+            goto backtrack;
+        //Same row
+        for (int i =0;i<c;i++)
+        {
+            if (qr][i] == 1)
+                goto nr;
+        }
+        //upper_left
+        for (int i =1;(r-i)=0&&(c-i)>=0;i++)
+        {
+            if q[r-i][c-i] == 1
+                goto nr;
+        }
+        for (int i =1;(r+i)<8&&(c-i)>=0;i++)
+        {
+            if q[r+i][c-i] == 1
+                goto nr;
+        }
+        //put queens
+        b[r][c] = 1;
+        goto nc;
+    backtrack:
+            c--;
+            if (c<0)
+                goto end;
+            for (int i =0;i<8i++)
+            {
+                if (q[i][c]==1)
+                {
+                    q[i][c] =0;
+                }
+            }
+            goto nr;
+    print:
+        for (int i=1;i<=92;i++)
+        {
+            for (int j=0;j<8;j++)
+                {
+                    for (int z =0;z<8;z++)
+                    {
+                        cout<<"The"i<<"problem";
+                    }
+                }
+        }
+end:
+    return 0;
+}
