@@ -1,8 +1,7 @@
-// Online C++ compiler to run C++ program online
 #include <iostream>
 using namespace std;
 int main() {
-    int q[8][8]{}, r,c=0;
+    int q[8][8]={0}, r,c=0;
     q[0][0] = 1;
     nc:
         c++;
@@ -18,46 +17,47 @@ int main() {
         //Same row
         for (int i =0;i<c;i++)
         {
-            if (qr][i] == 1)
+            if (q[r][i] == 1)
                 goto nr;
         }
         //upper_left
-        for (int i =1;(r-i)=0&&(c-i)>=0;i++)
+        for (int i =1;r-i >=0&& c-i >=0;i++)
         {
-            if q[r-i][c-i] == 1
+            if (q[r-i][c-i] == 1)
                 goto nr;
         }
         for (int i =1;(r+i)<8&&(c-i)>=0;i++)
         {
-            if q[r+i][c-i] == 1
+            if (q[r+i][c-i] == 1)
                 goto nr;
         }
         //put queens
-        b[r][c] = 1;
+        q[r][c] = 1;
         goto nc;
     backtrack:
             c--;
             if (c<0)
-                goto end;
-            for (int i =0;i<8i++)
+                return 0;
+            r =0;
+            while (q[r][c] !=1)
             {
-                if (q[i][c]==1)
-                {
-                    q[i][c] =0;
-                }
+                r++;
             }
+            q[r][c] =0;
             goto nr;
-    print:
-        for (int i=1;i<=92;i++)
-        {
-            for (int j=0;j<8;j++)
-                {
-                    for (int z =0;z<8;z++)
+        print:
+            static int solution =0;
+            ++solution;
+            cout<<"Solution "<<solution<<endl;
+                for (int j=0;j<8;j++)
                     {
-                        cout<<"The"i<<"problem";
+                        for (int z =0;z<8;z++)
+                        {
+                            cout<<q[j][z]<<" ";
+                        }
+                        cout<<endl;
                     }
-                }
-        }
-end:
+                cout<<endl;
+            goto backtrack;
     return 0;
 }
