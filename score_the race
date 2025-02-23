@@ -1,47 +1,82 @@
+#include<iostream>
+#include<string>
 #include<cctype>
+#include<iomanip>
 using namespace std;
 string isupper(string& word)
 {
         for (int i =0; i<word.size();i++)
         {
-                word[i] = toupper(word[i]);
+            word[i] = toupper(word[i]);
         }
-        retrun word;
-
+        return word;
 };
 int main(){
         string input;
         const int Max_Team = 26;
-        //index = input[i] -'A';
-        //team[index]++;
         while(true)
         {
-                cout<<"Enter race results(A-Z) (or 'done' to exit program): ";
-                cin>>input;
-                if (input == "done")
+            cout<<"Enter race results(A-Z) (or 'done' to exit program): ";                
+            cin>>input;
+            if (input == "done")
+            {
+                break;
+            }
+            input = isupper(input);
+            bool valid = true;
+            int team[Max_Team]={};
+            int score_team[Max_Team]= {};
+            //Store the num of runner and scores of each team
+            for (int i =0;i< input.size();i++)
+            {
+                int index = input[i] - 'A';
+                team[index]++;
+                score_team[index] += i+1;
+            }
+            int num_team=0;
+            int num_runners = -1;
+            //check the score for each team to see follow the index
+            for(int i=0;i<Max_Team;i++)
+            {
+                if (team[i] !=0)
                 {
+                    num_team++;
+                    if (num_runners == -1)
+                        num_runners = team[i];
+                    else if (team[i] != num_runners)
+                    {
+                        valid = false;
                         break;
+                    }
                 }
-                bool valid = true;
-                int team[Max_Team];
-                for (int i =0;i<= input.size();i++)
+            }
+            if (!valid)
+            {
+                cout<<"Each team has to have the same number of runners\n";
+                continue;
+            }
+            double averageScore;
+            cout<<"There are "<<num_team<<" teams.\n";
+            cout<<"Each team has "<<num_runners<<" runners.\n";
+            cout<<"Team Score"<<endl;
+            double lowest_score= 1000000.0;
+            string winner ="";
+            for (int i =0;i< Max_Team; ++i)  
+            {
+                if (team[i] >0)
                 {
-                        int index = input[i]- 'A';
-                        team[index]++;
+                    averageScore = (double) score_team[i]/num_runners;
+                    cout<<char(i+'A')<<" "<<fixed<<setprecision(2)<<"   "<<averageScore<<endl;
+                    // Traack the team wih the lowest aveage score (winner)
+                    if (averageScore < lowest_score)
+                    {
+                        lowest_score = averageScore;
+                        winner = char(i+'A');
+                    }
                 }
-                int num_team=0;
-                for(int i=0;i<= Max_Team;i++)
-                {
-                        if (team[i] !=0)
-                        {
-                                num_team++;
-                        }
-
-                }
-               
-
+            }
+            //output the winning team
+            cout<<"The winning team is team "<<winner<<" with the score of "<<fixed<<setprecision(2)<<lowest_score<<endl;
         }
         return 0;
-
-
 }
